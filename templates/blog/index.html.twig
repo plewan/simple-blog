@@ -8,12 +8,24 @@
 
 <div class="example-wrapper">
     <h2>Posty</h2>
-    {% for post in posts %}
-        <div>
-            <strong>{{ post.title }}</strong>
-            <i>@{{ post.author }}, {{ post.createdAt|format_datetime('medium', 'short') }}</i>
-            <p>{{ post.text }}</p>
-        </div>
-    {% endfor %}
+    {% if posts|length > 0 %}
+        {% for post in posts %}
+            <div>
+                <strong>{{ post.title }}</strong>
+                <i>@{{ post.author }}, {{ post.createdAt|format_datetime('medium', 'short') }}</i>
+                <p>{{ post.text }}</p>
+            </div>
+        {% endfor %}
+        {% block pagination %}
+                {% if previous >= 0 %}
+                    <a href="{{ path('homepage', { offset: previous }) }}">Prev</a>
+                {% endif %}
+                {% if next < posts|length %}
+                    <a href="{{ path('homepage', { offset: next }) }}">Next</a>
+                {% endif %}
+        {% endblock %}
+    {% else %}
+        <p>Ten blog nie posiada jeszcze żadnych wpisów.</p>
+    {% endif %}
 </div>
 {% endblock %}
