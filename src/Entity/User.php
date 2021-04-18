@@ -25,14 +25,28 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(
+     *      message = "Nazwa użytkownika nie może być pusta"
+     * )
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Nazwa użytkownika nie może mieć więcej niż {{ length }} znaków"
+     * )
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
-     * @Assert\Email
+     * @Assert\NotBlank(
+     *      message = "Adres mailowy nie może być pusta"
+     * )
+     * @Assert\Email(
+     *      message = "Adres '{{ value }}' nie jest poprawnym adresem mailowym"
+     * )
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Adres mailowy nie może mieć więcej niż {{ length }} znaków"
+     * )
      */
     private $mail;
 
@@ -42,10 +56,14 @@ class User
     private $password;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(
+     *      message = "Hasło nie może być puste"
+     * )
      * @Assert\Length(
      *      min = 8,
-     *      max = 40
+     *      max = 40,
+     *      minMessage = "Hasło musi mieć co najmniej {{ length }} znaków",
+     *      maxMessage = "Hasło nie może mieć więcej niż {{ length }} znaków"
      * )
      * @AppAssert\AtLeastOneCapitalLetter
      */
