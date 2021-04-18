@@ -22,6 +22,7 @@ SET row_security = off;
 
 COPY public.doctrine_migration_versions (version, executed_at, execution_time) FROM stdin;
 DoctrineMigrations\\Version20210418081039	2021-04-18 10:12:03	44
+DoctrineMigrations\\Version20210418181301	2021-04-18 20:13:12	58
 \.
 
 
@@ -56,7 +57,7 @@ SELECT pg_catalog.setval('public.post_id_seq', 4, true);
 -- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.user_id_seq', 1, false);
+SELECT pg_catalog.setval('public.user_id_seq', 7, true);
 
 
 --
