@@ -24,7 +24,7 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank(
      *      message = "Nazwa użytkownika nie może być pusta"
      * )
@@ -36,7 +36,7 @@ class User
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank(
      *      message = "Adres mailowy nie może być pusta"
      * )
